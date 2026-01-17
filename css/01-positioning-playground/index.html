@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 01 - Positioning Playground</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="card header">
+        <h1>CSS Position Playground</h1>
+        <p class="muted">
+          Hinglish notes inside CSS. Controls use pure CSS (no JS).
+        </p>
+      </header>
+
+      <section class="card">
+        <h2>Controls</h2>
+        <p class="muted">
+          Radio select karo and observe “chip” behavior.
+        </p>
+
+        <!-- Controls: CSS-only toggle (radio) -->
+        <div class="controls">
+          <label class="pill">
+            <input type="radio" name="pos" id="posStatic" checked />
+            static
+          </label>
+          <label class="pill">
+            <input type="radio" name="pos" id="posRelative" />
+            relative
+          </label>
+          <label class="pill">
+            <input type="radio" name="pos" id="posAbsolute" />
+            absolute (inside parent)
+          </label>
+          <label class="pill">
+            <input type="radio" name="pos" id="posFixed" />
+            fixed (viewport)
+          </label>
+          <label class="pill">
+            <input type="radio" name="pos" id="posSticky" />
+            sticky (scroll area)
+          </label>
+        </div>
+
+        <div class="stageWrap">
+          <div class="stageTitle muted">Stage: parent is positioned (relative)</div>
+          <div class="stage positionedParent">
+            <div class="boxHint muted">
+              Parent has <code>position: relative</code> so ABS child will anchor inside this box.
+            </div>
+
+            <!-- This is the element we re-position using CSS -->
+            <div class="chip" id="chip">
+              CHIP
+              <span class="chipSub muted">watch me</span>
+            </div>
+
+            <div class="fillerText">
+              <p>
+                Text is here to show normal flow. Static/relative chip will take space,
+                absolute/fixed will not.
+              </p>
+              <p class="muted">
+                Try: absolute → chip will jump top-right inside this box.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Sticky demo (scroll inside)</h2>
+        <p class="muted">
+          Sticky works inside scroll container too. Scroll this panel.
+        </p>
+
+        <div class="scrollArea" id="scrollArea">
+          <div class="stickyBar">
+            <strong>Sticky header</strong>
+            <span class="muted">I stick when you scroll</span>
+          </div>
+          <div class="scrollContent">
+            <p class="muted">
+              Enough content so scrollbar appears.
+            </p>
+            <div class="bigFiller"></div>
+            <p class="muted">Bottom.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Extra: z-index idea</h2>
+        <p class="muted">
+          Overlap ka control <code>z-index</code> karta hai, but only on positioned elements.
+        </p>
+        <div class="zDemo">
+          <div class="zBox z1">z-index: 1</div>
+          <div class="zBox z2">z-index: 2</div>
+          <div class="zBox z0">no z-index</div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+

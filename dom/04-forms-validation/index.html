@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 04 - Forms</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Forms + Validation</h1>
+      <section class="card">
+        <form id="form" class="grid">
+          <label>
+            Email
+            <input id="email" placeholder="you@example.com" />
+          </label>
+          <label>
+            Password
+            <input id="password" type="password" placeholder="min 6 chars" />
+          </label>
+          <button type="submit">Create account</button>
+          <p id="error" class="error hidden"></p>
+          <p id="success" class="success hidden">✅ Looks good</p>
+        </form>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
+

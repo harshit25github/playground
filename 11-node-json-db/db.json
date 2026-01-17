@@ -1,0 +1,8 @@
+{
+  "nextId": 3,
+  "todos": [
+    { "id": 1, "text": "Persist data to a file", "done": false },
+    { "id": 2, "text": "Handle read/write safely", "done": false }
+  ]
+}
+

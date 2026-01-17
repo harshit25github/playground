@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 12 - Parent/Child Nodes</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="row header">
+        <div>
+          <h1 class="title">Parent/Child Nodes Playground</h1>
+          <p class="muted">
+            Notes: <code>childNodes</code> includes text nodes (whitespace). <code>children</code>
+            includes only elements.
+          </p>
+        </div>
+        <div class="row">
+          <button id="clearLog" class="secondary" type="button">Clear log</button>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>DOM Tree (sample)</h2>
+        <p class="muted">
+          Is sample me intentionally whitespace/newlines hain, so <code>childNodes</code> me extra
+          text nodes aayenge.
+        </p>
+
+        <div id="tree" class="tree" aria-label="Tree root">
+          <div class="box" id="boxA">
+            <span class="tag">A</span>
+            <button class="mini" type="button">Button</button>
+            <span class="tag">B</span>
+          </div>
+
+          <ul id="list">
+            <li class="li">One <button>Button</button></li>
+            <li class="li">Two <button>Button</button></li>
+          </ul>
+
+          <p id="para">
+            Hello <strong id="strong">World</strong>
+          </p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Try actions</h2>
+        <div class="row">
+          <button id="inspectTree" type="button">Inspect #tree</button>
+          <button id="inspectStrong" class="secondary" type="button">Inspect #strong</button>
+          <button id="inspectList" class="secondary" type="button">Inspect #list</button>
+          <button id="walkSiblings" class="secondary" type="button">Walk siblings (list)</button>
+        </div>
+
+        <div class="row">
+          <button id="addTextNode" class="secondary" type="button">Add text node to #boxA</button>
+          <button id="addElementNode" class="secondary" type="button">Add element to #boxA</button>
+          <button id="removeLastNode" class="secondary" type="button">Remove last child (boxA)</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Log</h2>
+        <div id="log" class="log" role="log" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+

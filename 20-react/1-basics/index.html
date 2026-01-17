@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- HTML5 document metadata; keep charset early so the browser parses text correctly -->
+    <meta charset="UTF-8">
+    <!-- Responsive viewport so mobile screens render at device width, not desktop width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS in the head prevents a flash of unstyled content (FOUC) on first paint -->
+    <link href="index.css" rel="stylesheet">
+    <!-- Interview Q: Why keep CSS in the head instead of the body?
+         A: It avoids a flash of unstyled content and lets the browser start layout with styles applied.
+         Reasoning: the parser discovers CSS early and can block rendering until styles are ready. -->
+</head>
+<body>
+    <!-- React will mount into this single root node -->
+    <div id="root">
+        <!-- React replaces the contents of #root; keep it empty in static HTML -->
+    </div>
+
+    <!-- CDN React (development build): exposes global React used by ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- `crossorigin` enables CORS-aware requests for better error reporting and SRI support -->
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- ReactDOM depends on React and provides createRoot to render into #root -->
+
+    <!-- Local script runs after the libraries load and after #root exists -->
+    <!-- index.js typically calls ReactDOM.createRoot(document.getElementById('root')) -->
+    <script src="./index.js"></script>
+
+    <!-- Curious interview-style questions with reasoning:
+         - Q: Why are scripts placed at the end of the body instead of the head?
+           A: So the DOM (like #root) is available; alternatively use `defer` in the head.
+           Reasoning: blocking scripts in the head pause HTML parsing and can delay first paint.
+         - Q: What breaks if index.js runs before the #root element exists?
+           A: `document.getElementById('root')` returns null and ReactDOM.createRoot(null) throws.
+           Reasoning: React needs a real DOM node to mount into and cannot mount to null.
+         - Q: Why does ReactDOM need React to load first?
+           A: ReactDOM uses the React API to create and reconcile elements.
+           Reasoning: the UMD build attaches globals in load order; ReactDOM expects React to exist.
+         - Q: What is the difference between development and production builds of React?
+           A: Dev builds include warnings and extra checks; prod builds are smaller and faster.
+           Reasoning: dev adds safety and debug hints, prod strips them for performance.
+         - Q: Why use the UMD builds from a CDN rather than a bundler?
+           A: Quick setup for learning; bundlers give tree-shaking and better production output.
+           Reasoning: UMD avoids build steps, but bundlers optimize and manage dependencies.
+         - Q: What does the crossorigin attribute change for script loading and error reporting?
+           A: It enables CORS mode so browsers can surface detailed error stacks and allow SRI.
+           Reasoning: without CORS, errors become "Script error" and SRI can be blocked.
+         - Q: What are the tradeoffs of using a CDN (caching, availability, privacy, CSP)?
+           A: Faster cached loads but adds external dependency and CSP/privacy considerations.
+           Reasoning: CDNs improve cache hit rates, but you depend on third-party uptime and policy.
+         - Q: How would you add integrity checks (SRI) for CDN scripts?
+           A: Add `integrity=\"...\"` and `crossorigin=\"anonymous\"` with the CDN hash.
+           Reasoning: SRI lets the browser verify the file hash before executing it.
+         - Q: Why use a single root node instead of multiple mount points?
+           A: A single root keeps React tree cohesive; multiple roots are possible but split state.
+           Reasoning: one tree is easier to manage and avoids cross-root coordination.
+         - Q: How would you convert this to type=\"module\" and import from esm builds?
+           A: Use `<script type=\"module\">` and import from `https://esm.sh/...` or similar.
+           Reasoning: ESM lets you use native imports but requires compatible CDN endpoints.
+         - Q: What happens if index.css is loaded at the end of the body?
+           A: The page may flash unstyled content before CSS loads.
+           Reasoning: styles are discovered late, so the browser paints default styles first.
+         - Q: How do you verify React is actually rendering (e.g., check createRoot output)?
+           A: Inspect the DOM, add console logs, or render visible text and confirm it appears.
+           Reasoning: direct evidence in the DOM or logs confirms the render pipeline ran.
+    -->
+</body>
+</html>

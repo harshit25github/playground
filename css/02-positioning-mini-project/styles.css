@@ -1,0 +1,72 @@
+@import url("../00-html-dom/styles.css");
+
+/* Skeleton CSS only. Aap JS add karke open/close states handle karo. */
+
+.infoWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  position: relative; /* TODO: tooltip ko is parent ke relative absolute position karna */
+}
+
+.infoIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.tooltip {
+  /* TODO: make this `position: absolute` and place near the icon */
+  display: none; /* TODO: show on hover or via JS */
+  min-width: 220px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(18, 26, 51, 0.95);
+  color: var(--text);
+}
+
+.menuWrap {
+  display: inline-block;
+  position: relative; /* TODO: dropdown ko button ke relative absolute position karna */
+}
+
+.dropdown {
+  /* TODO: position this using absolute (top: 100%, left: 0) etc. */
+  display: none; /* TODO: toggle open/close */
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(18, 26, 51, 0.95);
+}
+
+.dropdown button {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.modalOverlay {
+  /* TODO: make it fixed full-screen overlay */
+  display: none; /* TODO: show/hide */
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 20px;
+}
+
+.modal {
+  /* TODO: center me */
+  width: min(520px, 100%);
+  margin: 0 auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(18, 26, 51, 0.98);
+  padding: 14px;
+}
+

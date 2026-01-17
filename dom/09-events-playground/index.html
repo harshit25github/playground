@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 09 - Events Playground</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="row header">
+        <div>
+          <h1 class="title">DOM Events Playground</h1>
+          <p class="muted">Most used events with examples (Hinglish comments in JS).</p>
+        </div>
+        <div class="row">
+          <button id="clearLogBtn" class="secondary" type="button">Clear log</button>
+          <label class="row compact">
+            <input id="pauseLog" type="checkbox" />
+            Pause log
+          </label>
+        </div>
+      </header>
+
+      <section class="grid2">
+        <section class="card">
+          <h2>Mouse basics</h2>
+          <div class="row">
+            <button id="clickBtn" type="button">Click me</button>
+            <button id="dblBtn" class="secondary" type="button">Double-click me</button>
+          </div>
+          <p class="muted">Try: right click on this box (contextmenu).</p>
+          <div id="mouseBox" class="box" tabindex="0" aria-label="Mouse event box">
+            <div class="boxHint">Move mouse here / right-click / press mouse</div>
+            <div id="coords" class="coords muted">x: -, y: -</div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Keyboard + focus</h2>
+          <p class="muted">Try typing, focus/blur, Enter key.</p>
+          <div class="row">
+            <input id="keyInput" placeholder="Type here..." />
+            <button id="focusBtn" class="secondary" type="button">Focus input</button>
+          </div>
+          <p id="keyStatus" class="muted">Key status...</p>
+        </section>
+
+        <section class="card">
+          <h2>Forms</h2>
+          <p class="muted">Submit is prevented so page reload nahi hoga.</p>
+          <form id="demoForm" class="form">
+            <label>
+              Name
+              <input name="name" placeholder="Your name" />
+            </label>
+            <label>
+              Role
+              <select name="role">
+                <option value="student">Student</option>
+                <option value="dev">Developer</option>
+              </select>
+            </label>
+            <button type="submit">Submit</button>
+          </form>
+        </section>
+
+        <section class="card">
+          <h2>Input vs change</h2>
+          <p class="muted">
+            <code>input</code> event har keystroke pe. <code>change</code> usually blur/commit pe.
+          </p>
+          <div class="row">
+            <input id="liveInput" placeholder="input + change demo..." />
+            <select id="selectInput">
+              <option value="js">JavaScript</option>
+              <option value="dom">DOM</option>
+              <option value="node">Node</option>
+            </select>
+          </div>
+          <p id="inputStatus" class="muted"></p>
+        </section>
+
+        <section class="card">
+          <h2>Scroll + resize</h2>
+          <p class="muted">Scroll inside the panel + resize the window.</p>
+          <div id="scrollPanel" class="scrollPanel" aria-label="Scrollable panel">
+            <div class="scrollContent">
+              <p><strong>Scroll me</strong></p>
+              <p class="muted">
+                Ye panel intentionally tall hai. Scroll karoge to <code>scroll</code> event fire hoga.
+              </p>
+              <p class="muted">Tip: scroll events bohot frequent hote hain; log spam ho sakta hai.</p>
+              <div class="filler"></div>
+              <p class="muted">Bottom.</p>
+            </div>
+          </div>
+          <p id="resizeStatus" class="muted"></p>
+        </section>
+
+        <section class="card">
+          <h2>Event delegation (bubbling)</h2>
+          <p class="muted">
+            Parent pe listener, child buttons dynamically handle. Also shows <code>stopPropagation</code>.
+          </p>
+          <div id="list" class="listBox">
+            <button class="secondary" data-action="like" type="button">Like</button>
+            <button class="secondary" data-action="share" type="button">Share</button>
+            <button class="secondary" data-action="danger" type="button">Stop propagation</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Drag & Drop</h2>
+          <p class="muted">Drag the chip into the dropzone.</p>
+          <div class="row">
+            <div id="dragItem" class="chip" draggable="true">DRAG ME</div>
+            <div id="dropZone" class="dropZone">DROP HERE</div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Clipboard (copy/paste)</h2>
+          <p class="muted">Try copy/paste in this textarea.</p>
+          <textarea id="clipArea" class="textarea" rows="5" placeholder="Copy/paste here..."></textarea>
+        </section>
+
+        <section class="card">
+          <h2>Log</h2>
+          <div id="log" class="log" role="log" aria-live="polite"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+

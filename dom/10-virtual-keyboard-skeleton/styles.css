@@ -1,0 +1,77 @@
+@import url("../../00-html-dom/styles.css");
+
+.header {
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.title {
+  margin: 0;
+}
+
+.textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--text);
+  font-family: inherit;
+}
+
+.keyboard {
+  display: grid;
+  gap: 10px;
+}
+
+.rowKeys {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.key {
+  min-width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.key:hover {
+  border-color: color-mix(in srgb, var(--accent), white 18%);
+}
+
+.key:active {
+  transform: translateY(1px);
+}
+
+/* "Pressed" state aap JS se add karoge (class = pressed) */
+.key.pressed {
+  background: rgba(122, 162, 255, 0.18);
+  border-color: var(--accent);
+}
+
+.key.wide {
+  min-width: 92px;
+}
+
+.key.wider {
+  min-width: 120px;
+}
+
+.key.space {
+  flex: 1;
+  min-width: 260px;
+}
+
+@media (max-width: 900px) {
+  .rowKeys {
+    overflow: auto;
+    padding-bottom: 6px;
+  }
+}
+

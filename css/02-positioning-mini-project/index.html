@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 02 - Positioning Mini Project (Skeleton)</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="card">
+        <h1>Mini Project (Skeleton)</h1>
+        <p class="muted">Tooltip + Dropdown + Modal (you implement JS + positioning).</p>
+      </header>
+
+      <section class="card">
+        <h2>Tooltip</h2>
+        <p class="muted">Hover: tooltip show (you will implement with CSS/JS).</p>
+
+        <div class="infoWrap">
+          <span class="infoIcon" aria-hidden="true">i</span>
+          <div class="tooltip" role="tooltip">
+            Tooltip text. Position me using <code>position: absolute</code>.
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Dropdown</h2>
+        <p class="muted">Click Menu → open dropdown below (you will implement).</p>
+
+        <div class="menuWrap">
+          <button id="menuBtn" type="button">Menu</button>
+          <div class="dropdown" aria-label="Dropdown menu">
+            <button class="secondary" type="button">Item 1</button>
+            <button class="secondary" type="button">Item 2</button>
+            <button class="secondary" type="button">Item 3</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Modal</h2>
+        <p class="muted">Click Open modal → show overlay (you will implement).</p>
+
+        <button id="openModalBtn" type="button">Open modal</button>
+
+        <div class="modalOverlay" aria-hidden="true">
+          <div class="modal" role="dialog" aria-modal="true" aria-label="Demo modal">
+            <div class="row" style="justify-content: space-between">
+              <strong>Modal</strong>
+              <button id="closeModalBtn" class="secondary" type="button">Close</button>
+            </div>
+            <p class="muted">
+              Center me using positioning. Overlay should cover full screen.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+

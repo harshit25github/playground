@@ -1,0 +1,21 @@
+@import url("../../00-html-dom/styles.css");
+
+.textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--text);
+  font-family: inherit;
+}
+
+.light {
+  --bg: #f6f7fb;
+  --panel: #ffffff;
+  --text: #121a33;
+  --muted: #4a557a;
+  --accent: #2b6cff;
+  --border: rgba(0, 0, 0, 0.12);
+}
+

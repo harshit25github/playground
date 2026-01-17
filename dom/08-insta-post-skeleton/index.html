@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 08 - Insta Post Skeleton</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link                                                                                                 
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"                             
+    rel="stylesheet"                                                                                    
+  />
+  </head>
+  <body>
+    <main class="container">
+      <header class="row header">
+        <h1 class="title">Instagram Post (Skeleton)</h1>
+        <p class="muted">UI only — JS events aap add karoge.</p>
+      </header>
+
+      <article class="post card" aria-label="Instagram post">
+        <!-- Top bar -->
+        <div class="postTop">
+          <div class="user">
+            <div class="avatar" aria-hidden="true"></div>
+            <div class="userMeta">
+              <div class="usernameRow">
+                <span class="username" id="username">harsh.dev</span>
+                <span class="verified" title="Verified" aria-label="Verified">✓</span>
+              </div>
+              <span class="location muted" id="location">Bengaluru</span>
+            </div>
+          </div>
+
+          <!-- No event: button is just UI -->
+          <button class="iconBtn" type="button" aria-label="More">
+            <span class="iconText">⋯</span>
+          </button>
+        </div>
+
+        <!-- Media -->
+        <div class="mediaWrap">
+          <!-- Using a div as a placeholder image -->
+          <div class="media" role="img" aria-label="Post image placeholder">
+            <i class="ri-heart-fill ri-5x " ></i>
+          </div>
+        </div>
+
+        <!-- Actions row -->
+        <div class="actions">
+          <div class="leftActions">
+            <button class="iconBtn" type="button" aria-label="Like">
+              <!-- Note: agar aap `ri-...` (RemixIcon) use karoge to unka CSS include karna padta hai.
+                   Abhi hum HTML entity use kar rahe hain so offline bhi visible rahe. -->
+              <i class="ri-heart-fill"></i> 
+            </button>
+            <button class="iconBtn" type="button" aria-label="Comment">
+              <i class="ri-chat-3-line"></i> 
+            </button>
+            <button class="iconBtn" type="button" aria-label="Share">
+              <i class="ri-send-plane-line"></i> 
+            </button>
+          </div>
+          <button class="iconBtn" type="button" aria-label="Save">
+            <i class="ri-bookmark-line"></i> 
+          </button>
+        </div>
+
+        <!-- Dots (optional carousel indicator UI) -->
+        <div class="dots" aria-hidden="true">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+          <p class="likes">
+            Liked by <strong id="likedBy">alex</strong> and <strong id="likesCount">1,234</strong> others
+          </p>
+
+          <p class="caption">
+            <strong class="username">harsh.dev</strong>
+            <span id="captionText">Building my DOM skills day by day.</span>
+            <span class="hashtags">#javascript #dom #frontend</span>
+          </p>
+
+          <button class="linkBtn" type="button">View all 24 comments</button>
+
+          <!-- Comment preview list (static skeleton) -->
+          <ul class="comments" id="comments">
+            <li><strong>sam</strong> Nice UI!</li>
+            <li><strong>riya</strong> Add like animation next</li>
+          </ul>
+
+          <p class="time muted">2 hours ago</p>
+        </div>
+
+        <!-- Add comment area (UI only) -->
+        <div class="addComment">
+          <div class="emoji" aria-hidden="true">🙂</div>
+          <input id="commentInput" placeholder="Add a comment..." />
+          <button id="postBtn" class="linkBtn" type="button">Post</button>
+        </div>
+      </article>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+

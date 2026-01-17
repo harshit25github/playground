@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 01 - Selectors + Events</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Selectors + Events</h1>
+      <section class="card">
+        <div class="row">
+          <button id="helloBtn" type="button">Say hello</button>
+          <button id="toggleBtn" class="secondary" type="button">Toggle highlight</button>
+          <button id="absBtn" class="secondary" type="button">Create ABS dot (box)</button>
+          <button id="fixedBtn" class="secondary" type="button">Create FIXED dot (screen)</button>
+          <button id="clearBtn" class="secondary" type="button">Clear dots</button>
+        </div>
+        <p id="msg" class="muted">Click the buttons.</p>
+      </section>
+      <section class="card">
+        <h2>Demo box (ABS)</h2>
+        <p class="muted">
+          Is box ke andar dots <code>position: absolute</code> se place honge (parent is
+          <code>position: relative</code>).
+        </p>
+        <div id="demoBox" class="demoBox" aria-label="Absolute positioning demo area"></div>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

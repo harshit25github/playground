@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01 - DOM Mini Project</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Mini Project</h1>
+
+      <section class="card">
+        <h2>Counter</h2>
+        <div class="row">
+          <button id="decBtn" type="button">-</button>
+          <div id="count" class="count">0</div>
+          <button id="incBtn" type="button">+</button>
+          <button id="resetBtn" class="secondary" type="button">Reset</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Todos</h2>
+        <div class="row">
+          <input id="todoInput" placeholder="New todo..." />
+          <button id="addTodoBtn" type="button">Add</button>
+        </div>
+        <div class="row">
+          <button data-filter="all" class="secondary" type="button">All</button>
+          <button data-filter="active" class="secondary" type="button">Active</button>
+          <button data-filter="done" class="secondary" type="button">Done</button>
+        </div>
+        <ul id="todoList" class="list"></ul>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+

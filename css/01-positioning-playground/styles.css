@@ -1,0 +1,209 @@
+@import url("../00-html-dom/styles.css");
+
+/* Hinglish mental model:
+   - static: default flow (top-to-bottom). top/left has no effect.
+   - relative: flow me rehta hai, but visually shift hota hai (top/left works).
+               Original space reserve hota hai (gap remains).
+   - absolute: flow se bahar nikal jata hai. Nearest "positioned" parent ke relative.
+               (positioned parent = relative/absolute/fixed/sticky).
+               Space reserve nahi hota, so content can slide under.
+   - fixed: viewport (screen) ke relative. Scroll pe bhi wahi rahega.
+   - sticky: normal flow + scroll threshold pe stick. Needs top (or left etc).
+*/
+
+.header h1 {
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 14px;
+}
+
+.pill {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  user-select: none;
+}
+
+.pill input {
+  width: 16px;
+  height: 16px;
+}
+
+.stageWrap {
+  display: grid;
+  gap: 10px;
+}
+
+.stageTitle {
+  font-size: 12px;
+}
+
+.stage {
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  padding: 14px;
+  background: rgba(0, 0, 0, 0.15);
+  min-height: 220px;
+}
+
+.positionedParent {
+  position: relative; /* important for absolute demo */
+}
+
+.boxHint {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.chip {
+  display: inline-grid;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(122, 162, 255, 0.14);
+  font-weight: 900;
+  width: fit-content;
+}
+
+.chipSub {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.fillerText p {
+  margin: 10px 0 0;
+}
+
+/* --- Sticky demo area --- */
+.scrollArea {
+  height: 260px;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.stickyBar {
+  position: sticky; /* sticky works inside this scrollArea */
+  top: 0; /* threshold: top edge */
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(18, 26, 51, 0.95);
+  backdrop-filter: blur(6px);
+}
+
+.scrollContent {
+  padding: 12px;
+}
+
+.bigFiller {
+  height: 620px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  margin: 12px 0;
+}
+
+/* --- z-index demo --- */
+.zDemo {
+  position: relative;
+  height: 160px;
+  border-radius: 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.zBox {
+  position: absolute;
+  width: 160px;
+  height: 90px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+
+.z1 {
+  left: 14px;
+  top: 18px;
+  z-index: 1;
+  background: rgba(255, 92, 138, 0.14);
+}
+
+.z2 {
+  left: 74px;
+  top: 42px;
+  z-index: 2;
+  background: rgba(122, 162, 255, 0.16);
+}
+
+.z0 {
+  left: 134px;
+  top: 18px;
+  /* no z-index set */
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ----------------- CSS-only position toggles -----------------
+   Trick:
+   - Radios are before the stage in DOM
+   - Use :has() if available OR fallback via general sibling is hard here.
+   To keep it reliable across browsers, we use :has() with a safe fallback:
+   If :has() not supported, you can still read the code; default is static.
+*/
+
+/* Fallback: if no :has support, chip stays static. */
+
+@supports selector(:has(*)) {
+  /* static */
+  body:has(#posStatic:checked) #chip {
+    position: static;
+  }
+
+  /* relative: move visually but keep original space */
+  body:has(#posRelative:checked) #chip {
+    position: relative;
+    top: 18px;
+    left: 18px;
+  }
+
+  /* absolute: anchor to positioned parent (the dashed box) */
+  body:has(#posAbsolute:checked) #chip {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+
+  /* fixed: anchor to viewport */
+  body:has(#posFixed:checked) #chip {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 999;
+  }
+
+  /* sticky: show sticky behavior inside scroll area instead (chip stays static) */
+  body:has(#posSticky:checked) #chip {
+    position: static;
+  }
+
+  body:has(#posSticky:checked) .stickyBar {
+    outline: 2px solid rgba(122, 162, 255, 0.6);
+    outline-offset: -2px;
+  }
+}
+

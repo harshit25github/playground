@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>00 - HTML DOM</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="row">
+        <h1>HTML + DOM Playground</h1>
+        <p class="muted">Edit <code>app.js</code> and refresh.</p>
+      </header>
+
+      <section class="card">
+        <h2>Profile</h2>
+        <div class="row">
+          <label>
+            Name
+            <input id="nameInput" placeholder="Type a name..." />
+          </label>
+          <button id="saveNameBtn" type="button">Save</button>
+        </div>
+        <p>
+          Hello, <strong id="nameOutput">Anonymous</strong>
+          <span id="savedBadge" class="badge hidden">saved</span>
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>List render</h2>
+        <div class="row">
+          <input id="itemInput" placeholder="Add an item..." />
+          <button id="addItemBtn" type="button">Add</button>
+          <button id="clearBtn" class="secondary" type="button">Clear</button>
+        </div>
+        <ul id="list" class="list"></ul>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+

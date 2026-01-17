@@ -1,0 +1,13 @@
+@import url("../00-html-dom/styles.css");
+
+.count {
+  width: 72px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+

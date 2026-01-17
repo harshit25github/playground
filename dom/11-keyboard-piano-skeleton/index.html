@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 11 - Keyboard Piano (Skeleton)</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="row header">
+        <div>
+          <h1 class="title">Keyboard Piano (Skeleton)</h1>
+          <p class="muted">
+            Simple piano: sirf 6 tiles for practice. Keyboard keys:
+            A S D F G H
+          </p>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>Keys</h2>
+        <div id="piano" class="pianoGrid" aria-label="Piano">
+          <!-- Simple tiles: each box shows ONLY one alphabet -->
+          <!-- data-sound: optional hint if you want to play wav files -->
+          <button class="pKey tile" data-key="a" data-sound="C4.wav" type="button">A</button>
+          <button class="pKey tile" data-key="s" data-sound="D4.wav" type="button">S</button>
+          <button class="pKey tile" data-key="d" data-sound="E4.wav" type="button">D</button>
+          <button class="pKey tile" data-key="f" data-sound="F4.wav" type="button">F</button>
+          <button class="pKey tile" data-key="g" data-sound="G4.wav" type="button">G</button>
+          <button class="pKey tile" data-key="h" data-sound="A4.wav" type="button">H</button>
+        </div>
+        <button class="replay">replay and reset </button>
+      </section>
+
+      <section class="card">
+        <h2>Status</h2>
+        <p id="status" class="muted">Press a key to start.</p>
+        <p class="muted">
+          Tip: audio usually needs a user gesture first (click anywhere) before playing.
+        </p>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

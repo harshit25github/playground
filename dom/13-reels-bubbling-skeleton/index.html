@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 13 - Reels Bubbling Skeleton</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link                                                                                                 
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"                             
+    rel="stylesheet"                                                                                    
+  />
+  </head>
+  <body>
+    <main class="container">
+      <header class="row header">
+        <div>
+          <h1 class="title">Reels (Skeleton)</h1>
+          <p class="muted">No JS implementation. You will add bubbling/delegation by yourself.</p>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>Feed</h2>
+        <p class="muted">
+          Tip: yaha multiple reels hain. Delegation ke liye parent container pe ek listener best rahega.
+        </p>
+
+        <!-- Parent container: you will attach ONE click listener here (delegation) -->
+        <div id="feed" class="feed" aria-label="Reels feed">
+          <!-- Reel 1 -->
+          <article class="reel" data-reel-id="r1" aria-label="Reel r1">
+            <div class="video" role="img" aria-label="Reel video placeholder">
+              <!-- <div class="videoHint">Reel video area</div> -->
+              <img src="https://plus.unsplash.com/premium_photo-1664359679216-60ffd478201a?q=80&w=3086&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+              <div class="playBadge" aria-hidden="true">▶</div>
+            </div>
+
+            <div class="overlay">
+              <div class="left">
+                <a class="userRow" href="#" data-action="openProfile">
+                  <span class="avatar" aria-hidden="true"></span>
+                  <span class="username">@harsh.dev</span>
+                </a>
+                <p class="caption">Building DOM projects daily.</p>
+                <div class="audioRow muted">
+                  <span aria-hidden="true">♪</span>
+                  <span>Original audio</span>
+                </div>
+              </div>
+
+              <div class="right">
+                <button class="iconBtn" type="button" data-action="like" aria-label="Like">
+                  <span class="icon" aria-hidden="true"><i class="ri-heart-line"></i></span>
+                  <span class="count" data-like-count>120</span>
+                </button>
+                <button class="iconBtn" type="button" data-action="comment" aria-label="Comments">
+                  <span class="icon" aria-hidden="true"><i class="ri-chat-1-line"></i></span>
+                  <span class="count" data-comment-count>18</span>
+                </button>
+                <button class="iconBtn" type="button" data-action="share" aria-label="Share">
+                  <span class="icon" aria-hidden="true"><i class="ri-share-forward-line-line"></i></span>
+                  <span class="count">Share</span>
+                </button>
+                
+                <button class="iconBtn" type="button" data-action="mute" aria-label="Mute">
+                  <span class="icon" aria-hidden="true"><i class="ri-volume-mute-line"></i></span>
+                  <span class="count">Mute</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Comments drawer (static skeleton) -->
+            <section class="drawer" aria-label="Comments drawer">
+              <div class="drawerHeader">
+                <strong>Comments</strong>
+                <button class="miniBtn" type="button" data-action="closeComments">Close</button>
+              </div>
+              <ul class="comments">
+                <li><strong>sam</strong> Nice reel!</li>
+                <li><strong>riya</strong> Try delegation on feed.</li>
+              </ul>
+              <div class="drawerComposer">
+                <input class="input" placeholder="Add a comment..." />
+                <button class="miniBtn" type="button" data-action="postComment">Post</button>
+              </div>
+            </section>
+          </article>
+
+          <!-- Reel 2 -->
+          <article class="reel" data-reel-id="r2" aria-label="Reel r2">
+            <div class="video" role="img" aria-label="Reel video placeholder">
+              <!-- <div class="videoHint">Reel video area</div> -->
+               <img src="https://plus.unsplash.com/premium_photo-1669704098876-2a38eb10e56a?q=80&w=776&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="pic">
+              <div class="playBadge" aria-hidden="true">▶</div>
+            </div>
+
+            <div class="overlay">
+              <div class="left">
+                <a class="userRow" href="#" data-action="openProfile">
+                  <span class="avatar" aria-hidden="true"></span>
+                  <span class="username">@frontend.fun</span>
+                </a>
+                <p class="caption">Event bubbling samajh aa gaya?</p>
+                <div class="audioRow muted">
+                  <span aria-hidden="true">♪</span>
+                  <span>Trending audio</span>
+                </div>
+              </div>
+
+              <div class="right">
+                <button class="iconBtn" type="button" data-action="like" aria-label="Like">
+                  <span class="icon" aria-hidden="true"><i class="ri-heart-line"></i></span>
+                  <span class="count" data-like-count>120</span>
+                </button>
+                <button class="iconBtn" type="button" data-action="comment" aria-label="Comments">
+                  <span class="icon" aria-hidden="true"><i class="ri-chat-1-line"></i></span>
+                  <span class="count" data-comment-count>18</span>
+                </button>
+                <button class="iconBtn" type="button" data-action="share" aria-label="Share">
+                  <span class="icon" aria-hidden="true"><i class="ri-share-forward-line-line"></i></span>
+                  <span class="count">Share</span>
+                </button>
+                
+                <button class="iconBtn" type="button" data-action="mute" aria-label="Mute">
+                  <span class="icon" aria-hidden="true"><i class="ri-volume-mute-line"></i></span>
+                  <span class="count">Mute</span>
+                </button>
+              </div>
+            </div>
+
+            <section class="drawer" aria-label="Comments drawer">
+              <div class="drawerHeader">
+                <strong>Comments</strong>
+                <button class="miniBtn" type="button" data-action="closeComments">Close</button>
+              </div>
+              <ul class="comments">
+                <li><strong>alex</strong> `e.target` vs `e.currentTarget`!</li>
+              </ul>
+              <div class="drawerComposer">
+                <input class="input" placeholder="Add a comment..." />
+                <button class="miniBtn" type="button" data-action="postComment">Post</button>
+              </div>
+            </section>
+          </article>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Notes</h2>
+        <ul class="notes">
+          <li>
+            <strong>Delegation:</strong> `#feed` par listener, and detect actions using
+            <code>e.target.closest("[data-action]")</code>.
+          </li>
+          <li>
+            <strong>Find reel:</strong> clicked button se nearest reel:
+            <code>btn.closest("[data-reel-id]")</code>.
+          </li>
+          <li>
+            <strong>Stop bubbling demo:</strong> close button pe <code>stopPropagation()</code> try
+            karo and observe.
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+

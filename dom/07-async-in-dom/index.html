@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 07 - Async in DOM</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Async in DOM</h1>
+      <p class="muted">
+        Ye playground browser me async concepts practice karata hai. Console bhi dekhna.
+      </p>
+     <section class="card">
+      <div class="outer">
+        <div class="inner"></div>
+      </div>
+      <div class="bottom">
+        <h2>0 %</h2>
+        <button id="download">Download</button>
+      </div>
+
+
+     </section>
+      <section class="card">
+        <h2>Controls</h2>
+        <div class="row">
+          <button id="clearBtn" class="secondary" type="button">Clear log</button>
+          <button id="timerBtn" type="button">Timer demo</button>
+          <button id="microBtn" type="button">Micro vs Macro demo</button>
+          <button id="seqParBtn" type="button">Sequential vs Parallel</button>
+          <button id="abortDemoBtn" type="button">Abort/Timeout demo</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Debounce demo</h2>
+        <p class="muted">
+          Typing fast karoge to debounce ki wajah se API call / expensive work delay hota hai.
+        </p>
+        <div class="row">
+          <input id="searchInput" placeholder="Type something..." />
+          <span id="searchStatus" class="muted"></span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Fetch demo (optional backend)</h2>
+        <p class="muted">
+          Backend: <code id="baseUrlLabel"></code> (start `playground/10-node-http-api` on port 3000)
+        </p>
+        <div class="row">
+          <input id="todoInput" placeholder="New todo..." />
+          <button id="createTodoBtn" type="button">Create todo</button>
+          <button id="loadTodosBtn" class="secondary" type="button">Load todos</button>
+        </div>
+        <ul id="todoList" class="list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Log</h2>
+        <div id="log" class="log" role="log" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+

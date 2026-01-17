@@ -1,0 +1,14 @@
+{
+  "name": "1-basics",
+  "version": "1.0.0",
+  "description": "a basic react setup ",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "anonoymous",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.16.3"
+  }
+}

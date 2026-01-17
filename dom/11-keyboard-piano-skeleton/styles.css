@@ -1,0 +1,62 @@
+@import url("../../00-html-dom/styles.css");
+
+.header {
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.title {
+  margin: 0;
+}
+
+/* Simple grid piano (no overlapping black keys) */
+.pianoGrid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(70px, 1fr));
+  gap: 10px;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+}
+
+.pKey {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 12px 10px;
+  user-select: none;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.pKey:active {
+  transform: translateY(1px);
+}
+
+/* Pressed state aap JS se add karoge */
+.pKey.pressed {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(122, 162, 255, 0.14);
+}
+
+/* Tile variants */
+.tile {
+  height: 90px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+}
+
+@media (max-width: 720px) {
+  .pianoGrid {
+    grid-template-columns: repeat(3, minmax(90px, 1fr));
+  }
+}
+
+
+.download{
+  margin: 10px 0;
+}
