@@ -71,3 +71,17 @@ Reasoning: you are learning; the dev build is more descriptive.
 1. Change the `h1` text and verify the DOM updates.
 2. Add a third child div and give it unique keys.
 3. Move scripts into the head with `defer` and confirm it still works.
+
+
+## Parcel
+- Dev Build
+- Local Server
+- HMR = Hot Module Replacement( Detecting a change and updating the page because  of FILE WATCHING ALGORITHM written in C++ )
+- Caching ( File Hashing ) so faster builds
+- Images and Video Optimization
+- Minification of files 
+- Bundling and Compression 
+- Consistent Hashing - ( big topic )
+- Code Splitting 
+- Diffrenetial Bundling - support for old browsers 
+- Tree Shaking - remove unused code

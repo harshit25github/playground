@@ -12,7 +12,8 @@ Goal: create this structure with React.createElement (without JSX):
   </div>
 </div>
 */
-
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 // React.createElement(type, props, children) returns a React element (a JS object).
 // `className` is used instead of `class` because `class` is a reserved keyword in JS.
 const headingTitle = React.createElement('h1', { key: 'title' }, 'Title');
@@ -20,15 +21,15 @@ const paragraph = React.createElement('p', { key: 'paragraph' }, 'Paragraph');
 
 // When children are an array, keys help React track sibling elements.
 // Keys must be unique among siblings (same level), not globally.
-const childDiv = React.createElement('div', { className: 'child' }, [headingTitle, paragraph]);
+const childDiv = React.createElement('div', { className: 'child', key: 'child1' }, [headingTitle, paragraph]);
 
 // This is the same idea, just inline to show you can nest createElement calls.
 const childDiv2 = React.createElement(
     'div',
-    { className: 'child' },
+    { className: 'child', key: 'child2' },
     [
         React.createElement('h1', { key: 'title' }, 'Title2'),
-        React.createElement('p', { key: 'paragraph' }, 'Paragraph2'),
+        React.createElement('p', { key: 'paragraph' }, 'Paragraph2 🤣'),
     ]
 );
 

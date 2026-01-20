@@ -19,14 +19,14 @@
     </div>
 
     <!-- CDN React (development build): exposes global React used by ReactDOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script> -->
     <!-- `crossorigin` enables CORS-aware requests for better error reporting and SRI support -->
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
     <!-- ReactDOM depends on React and provides createRoot to render into #root -->
 
     <!-- Local script runs after the libraries load and after #root exists -->
     <!-- index.js typically calls ReactDOM.createRoot(document.getElementById('root')) -->
-    <script src="./index.js"></script>
+    <script type="module" src="./App.js"></script>
 
     <!-- Curious interview-style questions with reasoning:
          - Q: Why are scripts placed at the end of the body instead of the head?
