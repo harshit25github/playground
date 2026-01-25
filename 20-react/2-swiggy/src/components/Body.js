@@ -2,11 +2,13 @@ import React, { useEffect } from "react"
 import { restaurants } from "../utils/mockData"
 import { RestaurantInfo } from "./RestaurantCard"
 import Simmer from "./Simmer"
+import { useNavigate } from "react-router"
 
 const Body = ()=>{
     const [restuarantData,setRestaurantData] = React.useState([])
     const [filteredData,setFilteredData] = React.useState([])
     const [searchText,setSearchText] = React.useState('')
+    const navigate = useNavigate()
  useEffect(()=>{
    console.log('rendered ')
    fetchData()
@@ -14,16 +16,21 @@ const Body = ()=>{
 
 
 const fetchData = async ()=>{
-    const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.25050&lng=77.40650&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
-    const json = await data.json()
-    // console.log(json)
-    const restaurantCardObj = json.data.cards.find(el=>el.card.card["id"]==="restaurant_grid_listing_v2")
-    // console.log(restaurantCardObj)
-    const cards = restaurantCardObj?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
-    console.log(cards)
-    setRestaurantData(cards)
-    setFilteredData(cards)
-}
+    try {
+          const data = await fetch('https://namastedev.com/api/v1/listRestaurants')
+        const json = await data.json()
+        // console.log(json)
+        // const restaurantCardObj = json.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+        // console.log(restaurantCardObj)
+        const cards = json.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants || []
+        console.log(cards)
+        setRestaurantData(cards)
+        setFilteredData(cards)
+    } catch (error) {
+        console.log('error while fetching restaurant data',error)
+    }
+  
+} 
 //conditional rendering 
 // if(restuarantData.length === 0 )return <Simmer/>
                                           
@@ -108,6 +115,7 @@ const fetchData = async ()=>{
                     tags={restaurant.info.tags}
                     rating={restaurant.info.avgRating}
                     price={restaurant.info.costForTwo}
+                    onClick={()=>{navigate(`/restaurant/${restaurant.info.id}`)}}
                     
                     cloudinaryImageId={restaurant.info.cloudinaryImageId}
                     />)}

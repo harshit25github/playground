@@ -1,10 +1,10 @@
 import { CDN_URL } from "../utils/contants.js"
 // name import 
 
-export const RestaurantInfo = ({title, subtitle, deliveryDuration , tags , rating , price,cloudinaryImageId})=>{
-    console.log(CDN_URL+cloudinaryImageId)
+export const RestaurantInfo = ({title, subtitle, deliveryDuration , tags , rating , price,cloudinaryImageId,onClick})=>{
+    // console.log(CDN_URL+cloudinaryImageId)
     return(
-        <article className="card">
+        <article className="card" onClick={onClick}>
                         <img className="card-media" src={CDN_URL+cloudinaryImageId}></img>
                         <div className="card-title">{title}</div>
                         <div className="card-meta">
