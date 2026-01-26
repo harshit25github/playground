@@ -2,6 +2,10 @@ import React from "react";
 import { useParams } from "react-router";
 import { CDN_URL } from "../utils/contants";
 import { useRestaurantMenu } from "../utils/useRestaurantMenu";
+import { withVegTag } from "./RestaurantCard";
+import { AccordionItem } from "./Accordion.js";
+import RestaurantCategory from "./RestaurantCategory.js";
+
 
 const RestaurantShimmer = () => {
   return (
@@ -73,13 +77,9 @@ const RestaurantShimmer = () => {
 
 const Restaurant = () => {
   const { id } = useParams();
-  const { restaurantMenu, restaurantInfo } = useRestaurantMenu(id);
+  const { restaurantMenu, restaurantInfo , categories } = useRestaurantMenu(id);
+    const [toOpen , setToOpen] = React.useState(null);
   
-  const formatPrice = (price) => {
-    if (price == null) return "Rs --";
-    const value = price > 1000 ? Math.round(price / 100) : price;
-    return `Rs ${value}`;
-  };
 
   const heroImageStyle = restaurantInfo?.cloudinaryImageId
     ? {
@@ -92,6 +92,7 @@ const Restaurant = () => {
   if (restaurantInfo === null || restaurantMenu === null) {
     return <RestaurantShimmer />;
   }
+
 
   return (
     <div className="page restaurant-page">
@@ -152,72 +153,17 @@ const Restaurant = () => {
             <h2>Menu</h2>
             <span>{restaurantMenu.length} items</span>
           </div>
-          <div className="menu-filters">
-            <button className="pill is-active" type="button">
-              Popular
-            </button>
-            <button className="pill" type="button">
-              Starters
-            </button>
-            <button className="pill" type="button">
-              Main Course
-            </button>
-            <button className="pill" type="button">
-              Desserts
-            </button>
-            <button className="pill" type="button">
-              Beverages
-            </button>
-          </div>
+        
 
-          <div className="menu-list">
-            {restaurantMenu.map((item) => {
-              const rating =
-                item?.ratings?.aggregatedRating?.rating ||
-                item?.rating ||
-                "--";
-              const isVeg =
-                item?.isVeg ||
-                item?.itemAttribute?.vegClassifier === "VEG";
-              const imageId = item?.imageId;
-              const itemImageStyle = imageId
-                ? {
-                    backgroundImage: `linear-gradient(120deg, rgba(255, 106, 61, 0.2), rgba(255, 159, 104, 0.35)), url(${
-                      CDN_URL + imageId
-                    })`,
-                  }
-                : undefined;
+         
+           
 
-              return (
-                <article className="menu-item" key={item.id || item.name}>
-                  <div className="menu-item-info">
-                    <div className="menu-item-header">
-                      <h3>{item.name}</h3>
-                      {isVeg && <span className="chip is-soft">Veg</span>}
-                    </div>
-                    <p className="subtext">
-                      {item.description || "A customer favorite."}
-                    </p>
-                    <div className="menu-item-meta">
-                      <span className="rating">{rating}</span>
-                      <span>{item.isBestseller ? "Bestseller" : "Popular"}</span>
-                      <span className="price">
-                        {formatPrice(item.price ?? item.defaultPrice)}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="menu-item-cta">
-                    <div
-                      className="menu-item-media"
-                      style={itemImageStyle}
-                    ></div>
-                    <button className="menu-add-button" type="button">
-                      Add +
-                    </button>
-                  </div>
-                </article>
-              );
-            })}
+            
+            <div className="accordion">
+
+           
+            {categories.map((category,index) => <AccordionItem isOpen={toOpen === index} onClose={(e) => {e.stopPropagation(); console.log('closing'); setToOpen(null)}} onToggle={() =>{console.log('toggling'); setToOpen(index)}}   key={index} title={category?.card?.card?.title} content={restaurantMenu.map((item) => <RestaurantCategory item={item}  />)}/>)
+            }
           </div>
         </div>
 

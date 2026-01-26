@@ -4,6 +4,7 @@ export const useRestaurantMenu = (restaurantId)=>{
     console.log('restaurantId',restaurantId)
     const [restaurantMenu,setRestaurantMenu] = useState(null)
     const [restaurantInfo,setRestaurantInfo] = useState(null)
+    const [categories,setCategories] = useState(null)
     async function fetchRestaurantMenu(){
         const response = await fetch(`https://namastedev.com/api/v1/listRestaurantMenu/${restaurantId}`)
         const json = await response.json()
@@ -20,11 +21,15 @@ export const useRestaurantMenu = (restaurantId)=>{
         .flatMap((card) => card?.card?.card?.itemCards || [])
         .map((item) => item?.card?.info)
         .filter(Boolean);
+        console.log('items',items)
       setRestaurantMenu(items);
+      const categoriesItem  = regularCards.filter(card=>card?.card?.card['@type']==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+      console.log('categories',categoriesItem)
+      setCategories(categoriesItem)
     } 
   
     useEffect(()=>{
         fetchRestaurantMenu()
     },[])
-    return {restaurantMenu,restaurantInfo}
+    return {restaurantMenu,restaurantInfo,categories}
 }

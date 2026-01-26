@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { restaurants } from "../utils/mockData"
-import { RestaurantInfo } from "./RestaurantCard"
+import { RestaurantInfo, withVegTag } from "./RestaurantCard"
 import Simmer from "./Simmer"
 import { useNavigate } from "react-router"
 
@@ -33,7 +33,7 @@ const fetchData = async ()=>{
 } 
 //conditional rendering 
 // if(restuarantData.length === 0 )return <Simmer/>
-                                          
+     const RestaurantWithVegTag = withVegTag(RestaurantInfo)                                       
     return (
         restuarantData.length === 0  ? <Simmer/>   :  
         
@@ -107,7 +107,7 @@ const fetchData = async ()=>{
                     <span>6 options</span>
                 </div>
                 <div className="card-grid">
-                    {filteredData.map(restaurant=> <RestaurantInfo 
+                    {filteredData.map(restaurant=> restaurant.info.veg ? <RestaurantWithVegTag key={restaurant.info.id} {...restaurant.info}/> : <RestaurantInfo 
                     key={restaurant.info.id}
                     title={restaurant.info.name}
                     subtitle={restaurant.info.cuisines.join(", ")}

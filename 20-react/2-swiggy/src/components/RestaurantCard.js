@@ -22,3 +22,15 @@ export const RestaurantInfo = ({title, subtitle, deliveryDuration , tags , ratin
                     </article>
     )
 }
+
+// accept input RestaurantInfo => output RestaurantInfo with Veg tag
+export const withVegTag = (RestaurantInfo)=>{
+    return (props)=>{
+        return(
+            <div className="veg-wrapper">
+            <label className="veg-tag">Veg</label>
+            <RestaurantInfo {...props}/>
+            </div>
+        )
+    }
+}
