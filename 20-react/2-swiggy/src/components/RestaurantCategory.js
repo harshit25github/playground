@@ -1,7 +1,11 @@
 import React from 'react'
 import { CDN_URL } from '../utils/contants';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem } from '../utils/slices/cartSlice';
 
 const RestaurantCategory = ({item}) => {
+    const dispatch = useDispatch();
+    const cartItems = useSelector((store)=>store.cart.items) 
     const formatPrice = (price) => {
     if (price == null) return "Rs --";
     const value = price > 1000 ? Math.round(price / 100) : price;
@@ -24,6 +28,19 @@ const RestaurantCategory = ({item}) => {
                   }
                 : undefined;
 
+                function handleAddItem(){
+                    // const itemFound  = cartItems.find((cartItem)=>cartItem.id === item.id)
+                    // if(itemFound){
+                    //   console.log(itemFound);
+                    //     itemFound.quantity +=1;
+                    // }
+                    // else{
+
+                    //   dispatch(addItem({...item, quantity:1}) )
+                    // }
+                    dispatch(addItem({...item, quantity:1}) )
+                } 
+        
               return (
                  
                 <article className="menu-item" key={item.id || item.name}>
@@ -48,7 +65,7 @@ const RestaurantCategory = ({item}) => {
                       className="menu-item-media"
                       style={itemImageStyle}
                     ></div>
-                    <button className="menu-add-button" type="button">
+                    <button className="menu-add-button" type="button" onClick={handleAddItem}>
                       Add +
                     </button>
                   </div>

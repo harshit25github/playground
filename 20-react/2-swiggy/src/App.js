@@ -10,6 +10,8 @@ import Cart from "./components/Cart";
 import Error from "./components/Error";
 import Restaurant from "./components/Restaurant";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import { appStore } from "./utils/appStore";
 /**
  * 
  * Header - Logo , home , Abbout and Cart 
@@ -38,7 +40,9 @@ const Applayout = ()=>{
 
 
     return (
-        <UserContext.Provider value={{userinfo,setUserinfo}} >
+        <Provider store={appStore}>
+
+        <UserContext.Provider value={{username:userinfo?.username,setUserinfo}} >
 
         <div className="app">
             <Header/>
@@ -47,6 +51,7 @@ const Applayout = ()=>{
 
         </div>
         </UserContext.Provider>
+        </Provider>
     )
 }
 const appRouter = createBrowserRouter([{

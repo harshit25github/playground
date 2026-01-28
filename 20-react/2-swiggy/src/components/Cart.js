@@ -1,6 +1,39 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart, removeItem } from "../utils/slices/cartSlice";
 
 function Cart() {
+  const cartItems = useSelector((store) => store.cart.items);
+
+  // Build a unique list with aggregated quantity per item (by id/name).
+  const uniqueCartItems = Array.from(
+    cartItems.reduce((map, item) => {
+      const key = item.id ?? item.name;
+      if (!key) {
+        return map;
+      }
+
+      const existing = map.get(key);
+      const itemQuantity = item.quantity ?? 1;
+
+      if (existing) {
+        existing.quantity += itemQuantity;
+      } else {
+        map.set(key, { ...item, quantity: itemQuantity });
+      }
+
+      return map;
+    }, new Map())
+  ).map(([, value]) => value);
+
+  console.log("Cart Items in Cart Component:", cartItems);
+  console.log("Unique Cart Items with Quantity:", uniqueCartItems);
+
+  const dispatch = useDispatch();
+  function handleReduceItem(itemId) {
+    dispatch(removeItem({ id: itemId }));
+  }
+ 
   return (
     <div className="page cart-page">
       <section className="page-hero cart-hero">
@@ -20,78 +53,36 @@ function Cart() {
             </p>
           </div>
         </div>
+        
       </section>
 
       <section className="cart-grid">
         <div className="cart-items">
           <div className="section-title">
             <h2>Items</h2>
-            <span>3 items</span>
+            <span>{cartItems.length} items</span>
           </div>
-
-          <article className="cart-item">
+            {uniqueCartItems.map((item) => (<article key={item.id} className="cart-item">
             <div className="cart-item-media"></div>
             <div className="cart-item-info">
-              <h3>Urban Spice House</h3>
+              <h3>{item.name}</h3>
               <p className="cart-item-subtext">
-                Paneer biryani with raita
+                {item.description || "A customer favorite."}
               </p>
-              <div className="cart-tags">
-                <span className="chip is-soft">Veg</span>
-                <span className="chip is-soft">Medium spice</span>
-              </div>
+              
             </div>
             <div className="cart-item-actions">
               <div className="quantity-control">
-                <button type="button">-</button>
-                <span>1</span>
-                <button type="button">+</button>
+                <button type="button" onClick={()=>handleReduceItem(item.id)}>-</button>
+                <span>{item.quantity}</span>
+                <button type="button" onClick={()=>handleIncreaseItem(item)}>+</button>
               </div>
-              <span className="price">Rs 249</span>
+              <span className="price">Rs {item.price/100}</span>
             </div>
-          </article>
+          </article>))}
+          
 
-          <article className="cart-item">
-            <div className="cart-item-media"></div>
-            <div className="cart-item-info">
-              <h3>Bowl & Co.</h3>
-              <p className="cart-item-subtext">
-                Power salad with avocado
-              </p>
-              <div className="cart-tags">
-                <span className="chip is-soft">Healthy</span>
-                <span className="chip is-soft">Gluten free</span>
-              </div>
-            </div>
-            <div className="cart-item-actions">
-              <div className="quantity-control">
-                <button type="button">-</button>
-                <span>2</span>
-                <button type="button">+</button>
-              </div>
-              <span className="price">Rs 358</span>
-            </div>
-          </article>
-
-          <article className="cart-item">
-            <div className="cart-item-media"></div>
-            <div className="cart-item-info">
-              <h3>Cafe Cacao</h3>
-              <p className="cart-item-subtext">Cold brew with almond milk</p>
-              <div className="cart-tags">
-                <span className="chip is-soft">Beverage</span>
-                <span className="chip is-soft">Sugar free</span>
-              </div>
-            </div>
-            <div className="cart-item-actions">
-              <div className="quantity-control">
-                <button type="button">-</button>
-                <span>1</span>
-                <button type="button">+</button>
-              </div>
-              <span className="price">Rs 129</span>
-            </div>
-          </article>
+       
         </div>
 
         <aside className="cart-summary">
@@ -113,6 +104,7 @@ function Cart() {
             <span>To pay</span>
             <span>Rs 797</span>
           </div>
+          <button className="primary-button" type="button" onClick={()=>dispatch(clearCart())}> Clear Cart </button>
           <button className="primary-button" type="button">
             Place order
           </button>

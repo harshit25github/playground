@@ -162,7 +162,7 @@ const Restaurant = () => {
             <div className="accordion">
 
            
-            {categories.map((category,index) => <AccordionItem isOpen={toOpen === index} onClose={(e) => {e.stopPropagation(); console.log('closing'); setToOpen(null)}} onToggle={() =>{console.log('toggling'); setToOpen(index)}}   key={index} title={category?.card?.card?.title} content={restaurantMenu.map((item) => <RestaurantCategory item={item}  />)}/>)
+            {categories.map((category,index) => <AccordionItem isOpen={toOpen === index} onClose={(e) => {e.stopPropagation(); console.log('closing'); setToOpen(null)}} onToggle={() =>{console.log('toggling'); setToOpen(index)}}   key={index} title={category?.card?.card?.title} content={restaurantMenu.map((item) => <RestaurantCategory key={item.id} item={item}  />)}/>)
             }
           </div>
         </div>
